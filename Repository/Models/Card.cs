@@ -1,20 +1,23 @@
-﻿namespace Repository.DataAccess
+﻿using Repository.Models;
+using System.Collections.Generic;
+
+namespace Repository.DataAccess
 {
     public class Card
     {
-        public string Type { get; }
-        public string BankName { get; }
-        public int Id { get; }
-        public string OwnerFullName { get; }
-        public int Password { get; }
+        public long Id { get; }
+        public int PinCode { get; }
+        public Client Client { get; }
+        public List<Transaction> TransactionList { get; }
+        public double Balance { get; set; }
 
-        public Card(string type, string bankName, int id, string ownerFullName, int password)
+        public Card(long id, int pinCode, Client client, List<Transaction> transactionList, double balance)
         {
-            Type = type;
-            BankName = bankName;
             Id = id;
-            OwnerFullName = ownerFullName;
-            Password = password;
+            Client = client;
+            PinCode = pinCode;
+            Balance = balance;
+            TransactionList = transactionList;
         }
     }
 }

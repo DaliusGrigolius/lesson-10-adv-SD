@@ -1,27 +1,19 @@
-﻿using BusinessLogic.Interfaces;
-using Repository.DataAccess;
-using System;
-using System.Collections.Generic;
+﻿using Repository.DataAccess;
+using System.Linq;
 
 namespace BusinessLogic.Services
 {
-    public class ATMService : IATMService
+    public class ATMService
     {
-        private readonly IATMRepo _ATMRepo;
-        public ATMService(IATMRepo aTMRepo)
-        {
-            _ATMRepo = aTMRepo;
-            //_privateProperty = new ATMController();
-        }
+        ATMRepo ATMRepo = new ATMRepo();
 
-        public bool Validate(int cardNumber, int password)
+        public bool Validate(long cardNumber, int pinCode)
         {
-            return true;
-        }
-
-        public List<ATM> Test(int cardNumber, int password)
-        {
-            return _ATMRepo.ReturnATMList();
+            ATM atm = ATMRepo.RetrieveATM();
+            bool cardIsValid = atm.CardsList.Any(i => i.Id == cardNumber);
+            bool pinCodeIsValid = atm.CardsList.Any(i => i.PinCode == pinCode);
+            if (cardIsValid && pinCodeIsValid) return true;
+            return false;
         }
     }
 }

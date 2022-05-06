@@ -1,0 +1,280 @@
+{
+  "Id": 1,
+  "CardsList": [
+    {
+      "Id": 1111222233334444,
+      "PinCode": 1234,
+      "Client": {
+        "Id": 1,
+        "FullName": "Name1 Surname1",
+        "BirthDate": "1985-02-03",
+        "Address": "address1",
+        "PhoneNumber": "860568350",
+        "Email": "dalius.grigolius@gmail.com"
+      },
+      "TransactionList": [
+        {
+          "Id": 1,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 20:23:27",
+          "Amount": 22,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
+        },
+        {
+          "Id": 2,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 20:26:02",
+          "Amount": 150,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
+        },
+        {
+          "Id": 3,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 20:27:44",
+          "Amount": 200,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
+        },
+        {
+          "Id": 4,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 20:27:49",
+          "Amount": 50,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
+        },
+        {
+          "Id": 5,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 20:28:32",
+          "Amount": 0,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
+        }
+      ],
+      "Balance": 478
+    },
+    {
+      "Id": 2222333344445555,
+      "PinCode": 2345,
+      "Client": {
+        "Id": 1,
+        "FullName": "Name2 Surname2",
+        "BirthDate": "1986-03-04",
+        "Address": "address2",
+        "PhoneNumber": "860568351",
+        "Email": "valius.grigolius@gmail.com"
+      },
+      "TransactionList": [
+        {
+          "Id": 1,
+          "Executor": "executor1",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 2550,
+          "Purpose": "salary",
+          "Status": "income"
+        },
+        {
+          "Id": 2,
+          "Executor": "executor2",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 150,
+          "Purpose": "cart1",
+          "Status": "outcome"
+        },
+        {
+          "Id": 3,
+          "Executor": "executor3",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 255,
+          "Purpose": "cart2",
+          "Status": "outcome"
+        },
+        {
+          "Id": 4,
+          "Executor": "executor4",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 10,
+          "Purpose": "cart3",
+          "Status": "outcome"
+        },
+        {
+          "Id": 5,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 30,
+          "Purpose": "cart4",
+          "Status": "outcome"
+        }
+      ],
+      "Balance": 100
+    },
+    {
+      "Id": 3333444455556666,
+      "PinCode": 3456,
+      "Client": {
+        "Id": 1,
+        "FullName": "Name3 Surname3",
+        "BirthDate": "1987-04-05",
+        "Address": "address3",
+        "PhoneNumber": "860568352",
+        "Email": "balius.grigolius@gmail.com"
+      },
+      "TransactionList": [
+        {
+          "Id": 1,
+          "Executor": "executor1",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 2550,
+          "Purpose": "salary",
+          "Status": "income"
+        },
+        {
+          "Id": 2,
+          "Executor": "executor2",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 150,
+          "Purpose": "cart1",
+          "Status": "outcome"
+        },
+        {
+          "Id": 3,
+          "Executor": "executor3",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 255,
+          "Purpose": "cart2",
+          "Status": "outcome"
+        },
+        {
+          "Id": 4,
+          "Executor": "executor4",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 10,
+          "Purpose": "cart3",
+          "Status": "outcome"
+        },
+        {
+          "Id": 5,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 30,
+          "Purpose": "cart4",
+          "Status": "outcome"
+        }
+      ],
+      "Balance": 200
+    },
+    {
+      "Id": 4444555566667777,
+      "PinCode": 4567,
+      "Client": {
+        "Id": 1,
+        "FullName": "Name4 Surname4",
+        "BirthDate": "1988-05-06",
+        "Address": "address4",
+        "PhoneNumber": "860568353",
+        "Email": "zalius.grigolius@gmail.com"
+      },
+      "TransactionList": [
+        {
+          "Id": 1,
+          "Executor": "executor1",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 2550,
+          "Purpose": "salary",
+          "Status": "income"
+        },
+        {
+          "Id": 2,
+          "Executor": "executor2",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 150,
+          "Purpose": "cart1",
+          "Status": "outcome"
+        },
+        {
+          "Id": 3,
+          "Executor": "executor3",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 255,
+          "Purpose": "cart2",
+          "Status": "outcome"
+        },
+        {
+          "Id": 4,
+          "Executor": "executor4",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 10,
+          "Purpose": "cart3",
+          "Status": "outcome"
+        },
+        {
+          "Id": 5,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 30,
+          "Purpose": "cart4",
+          "Status": "outcome"
+        }
+      ],
+      "Balance": 50
+    },
+    {
+      "Id": 5555666677778888,
+      "PinCode": 5678,
+      "Client": {
+        "Id": 1,
+        "FullName": "Name5 Surname5",
+        "BirthDate": "1989-06-07",
+        "Address": "address5",
+        "PhoneNumber": "860568354",
+        "Email": "talius.grigolius@gmail.com"
+      },
+      "TransactionList": [
+        {
+          "Id": 1,
+          "Executor": "executor1",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 2550,
+          "Purpose": "salary",
+          "Status": "income"
+        },
+        {
+          "Id": 2,
+          "Executor": "executor2",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 150,
+          "Purpose": "cart1",
+          "Status": "outcome"
+        },
+        {
+          "Id": 3,
+          "Executor": "executor3",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 255,
+          "Purpose": "cart2",
+          "Status": "outcome"
+        },
+        {
+          "Id": 4,
+          "Executor": "executor4",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 10,
+          "Purpose": "cart3",
+          "Status": "outcome"
+        },
+        {
+          "Id": 5,
+          "Executor": "executor5",
+          "DateOfEvent": "05/06/2022 15:47:20",
+          "Amount": 30,
+          "Purpose": "cart4",
+          "Status": "outcome"
+        }
+      ],
+      "Balance": 5000
+    }
+  ]
+}

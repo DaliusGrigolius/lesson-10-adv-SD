@@ -4,6 +4,6 @@ namespace Repository.DataAccess
 {
     public interface IATMRepo
     {
-        public List<ATM> ReturnATMList();
+        public ATM RetrieveATM();
     }
 }

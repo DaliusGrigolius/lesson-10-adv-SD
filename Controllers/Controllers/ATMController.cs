@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Repository.DataAccess;
+using System.Linq;
 
 namespace Controllers.Controllers
 {
@@ -8,20 +9,35 @@ namespace Controllers.Controllers
     [Route("[controller]")]
     public class ATMController : ControllerBase
     {
-        private readonly ILogger<ATMController> _logger;
-        private readonly IATMService _ATMService;
-        public ATMController(ILogger<ATMController> logger, IATMService atmService)
+        private readonly IATMService ATMService;
+        private readonly IATMRepo ATMRepo;
+
+        public ATMController(IATMService atmService, IATMRepo aTMRepo)
         {
-            _logger = logger;
-            _ATMService = atmService;
+            ATMService = atmService;
+            ATMRepo = aTMRepo;
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(bool), 200)]
-        [ProducesResponseType(typeof(bool), 404)]
-        public IActionResult GetOther()
+        //[ProducesResponseType(typeof(bool), 200)]
+        //[ProducesResponseType(typeof(bool), 404)]
+        public IActionResult GetATM()
         {
-            return Ok(_ATMService.Test(1, 2));
+            return Ok(ATMRepo.ReturnCardList());
+        }
+
+        [HttpGet]
+        public Card GetCard(long cardNumber, int pinCode)
+        {
+            bool isValid = ATMService.Validate(cardNumber, pinCode);
+            if (isValid)
+            {
+                return ATMRepo.ReturnCardList().Single(i => i.Id == cardNumber && i.PinCode == pinCode);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

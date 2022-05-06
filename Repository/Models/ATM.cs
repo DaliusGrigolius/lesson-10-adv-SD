@@ -5,12 +5,12 @@ namespace Repository.DataAccess
     public class ATM
     {
         public int Id { get; }
-        public List<Client> ClientsDataStorage { get; }
+        public List<Card> CardsList { get; }
 
-        public ATM(int id, List<Client> clientsDataStorage)
+        public ATM(int id, List<Card> cardsList)
         {
             Id = id;
-            ClientsDataStorage = clientsDataStorage;
+            CardsList = cardsList;
         }
     }
 }
