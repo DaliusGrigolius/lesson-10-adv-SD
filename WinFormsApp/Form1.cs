@@ -1,6 +1,8 @@
-﻿using BusinessLogic.Services;
+﻿using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using Repository.DataAccess;
 using Repository.ExternalApi;
+using Repository.ExternalApi.Interfaces;
 using Repository.Models;
 using System;
 using System.Drawing;
@@ -24,7 +26,7 @@ namespace WinFormsApp
         public Form1()
         {
             InitializeComponent();
-            serializer = new Serializer(new ATMRepo(new Deserializer()));
+            serializer = new Serializer();
             aTMService = new ATMService(new ATMRepo(new Deserializer()));
             aTMRepo = new ATMRepo(new Deserializer());
             atm = aTMRepo.RetrieveATM();
@@ -100,6 +102,7 @@ namespace WinFormsApp
             ConfirmButton.Visible = false;
             DepositCashTextBox.Visible = false;
             DepositConfirmButton.Visible = false;
+            DepositCashButton.Visible = true;
         }
 
         private void ShowErrorMessage()
@@ -124,6 +127,7 @@ namespace WinFormsApp
             WithdrawConfirmbutton.Visible = true;
             DepositCashTextBox.Visible = false;
             DepositConfirmButton.Visible = false;
+            DepositCashButton.Visible = true;
         }
 
         private void ShowDepositCashPanel()
@@ -148,6 +152,7 @@ namespace WinFormsApp
             WithdrawButton.Visible = true;
             DepositCashTextBox.Visible = false;
             DepositConfirmButton.Visible = false;
+            DepositCashButton.Visible = true;
         }
 
         private void ShowTransactionList()
@@ -158,6 +163,7 @@ namespace WinFormsApp
             WithdrawButton.Visible = true;
             DepositCashTextBox.Visible = false;
             DepositConfirmButton.Visible = false;
+            DepositCashButton.Visible = true;
             OutputTextBox.Text = "ID                  DATE                  EXECUTOR             PURPOSE               STATUS         AMOUNT\r\n\r\n";
             foreach (var card in currentCard.TransactionList)
             {
@@ -215,7 +221,7 @@ namespace WinFormsApp
             currentCard.TransactionList[3].Id -= 1;
             currentCard.TransactionList[4].Id -= 1;
             currentCard.TransactionList.RemoveAt(0);
-            currentCard.TransactionList.Add(new Transaction(5, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash deposit", "income"));
+            currentCard.TransactionList.Add(new Transaction(5, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash deposit       ", "income  "));
             serializer.UpdateDataFile(atm);
 
             DepositCashTextBox.Clear();

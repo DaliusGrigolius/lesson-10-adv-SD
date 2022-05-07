@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.CardNumberLabel = new System.Windows.Forms.Label();
             this.CardNumberTextBox = new System.Windows.Forms.TextBox();
             this.OutputTextBox = new System.Windows.Forms.TextBox();
@@ -71,7 +72,7 @@
             this.OutputTextBox.Name = "OutputTextBox";
             this.OutputTextBox.ReadOnly = true;
             this.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.OutputTextBox.Size = new System.Drawing.Size(540, 226);
+            this.OutputTextBox.Size = new System.Drawing.Size(517, 226);
             this.OutputTextBox.TabIndex = 2;
             // 
             // PinCodeTextBox
@@ -196,7 +197,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 273);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(796, 260);
             this.Controls.Add(this.DepositConfirmButton);
             this.Controls.Add(this.DepositCashTextBox);
             this.Controls.Add(this.DepositCashButton);
@@ -213,6 +216,8 @@
             this.Controls.Add(this.CardNumberTextBox);
             this.Controls.Add(this.CardNumberLabel);
             this.Name = "Form1";
+            this.Opacity = 0.9D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

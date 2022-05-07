@@ -16,45 +16,45 @@
         {
           "Id": 1,
           "Executor": "owner",
-          "DateOfEvent": "05/07/2022 11:49:37",
-          "Amount": 50,
-          "Purpose": "cash withdrawal",
-          "Status": "outcome"
+          "DateOfEvent": "05/07/2022 14:27:01",
+          "Amount": 100,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
         },
         {
           "Id": 2,
           "Executor": "owner",
-          "DateOfEvent": "05/07/2022 12:25:00",
-          "Amount": 100,
+          "DateOfEvent": "05/07/2022 14:27:37",
+          "Amount": 50,
           "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 3,
           "Executor": "owner",
-          "DateOfEvent": "05/07/2022 14:06:14",
-          "Amount": 1000,
-          "Purpose": "cash deposit",
-          "Status": "income"
+          "DateOfEvent": "05/07/2022 14:27:40",
+          "Amount": 200,
+          "Purpose": "cash deposit      ",
+          "Status": "income   "
         },
         {
           "Id": 4,
           "Executor": "owner",
-          "DateOfEvent": "05/07/2022 14:10:02",
-          "Amount": 200,
+          "DateOfEvent": "05/07/2022 14:28:27",
+          "Amount": 50,
           "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 5,
           "Executor": "owner",
-          "DateOfEvent": "05/07/2022 14:10:43",
-          "Amount": 100,
-          "Purpose": "cash deposit",
-          "Status": "income"
+          "DateOfEvent": "05/07/2022 14:28:30",
+          "Amount": 300,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
         }
       ],
-      "Balance": 1100
+      "Balance": 2000
     },
     {
       "Id": 2222333344445555,
@@ -70,46 +70,46 @@
       "TransactionList": [
         {
           "Id": 1,
-          "Executor": "executor1",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 2550,
-          "Purpose": "salary",
-          "Status": "income"
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:32:11",
+          "Amount": 200,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
         },
         {
           "Id": 2,
-          "Executor": "executor2",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 150,
-          "Purpose": "cart1",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:32:27",
+          "Amount": 50,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 3,
-          "Executor": "executor3",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 255,
-          "Purpose": "cart2",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:32:30",
+          "Amount": 100,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 4,
-          "Executor": "executor4",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 10,
-          "Purpose": "cart3",
-          "Status": "outcome"
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:32:32",
+          "Amount": 500,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
         },
         {
           "Id": 5,
-          "Executor": "executor5",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 30,
-          "Purpose": "cart4",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:34:11",
+          "Amount": 50,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         }
       ],
-      "Balance": 800
+      "Balance": 1300
     },
     {
       "Id": 3333444455556666,
@@ -125,46 +125,46 @@
       "TransactionList": [
         {
           "Id": 1,
-          "Executor": "executor1",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 2550,
-          "Purpose": "salary",
-          "Status": "income"
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:37:22",
+          "Amount": 500,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
         },
         {
           "Id": 2,
-          "Executor": "executor2",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 150,
-          "Purpose": "cart1",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:37:30",
+          "Amount": 10,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 3,
-          "Executor": "executor3",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 255,
-          "Purpose": "cart2",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:37:36",
+          "Amount": 50,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 4,
-          "Executor": "executor4",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 10,
-          "Purpose": "cart3",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:37:43",
+          "Amount": 20,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 5,
-          "Executor": "executor5",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 30,
-          "Purpose": "cart4",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:37:46",
+          "Amount": 20,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         }
       ],
-      "Balance": 200
+      "Balance": 600
     },
     {
       "Id": 4444555566667777,
@@ -180,46 +180,46 @@
       "TransactionList": [
         {
           "Id": 1,
-          "Executor": "executor2",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 150,
-          "Purpose": "cart1",
-          "Status": "outcome"
-        },
-        {
-          "Id": 2,
-          "Executor": "executor3",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 255,
-          "Purpose": "cart2",
-          "Status": "outcome"
-        },
-        {
-          "Id": 3,
-          "Executor": "executor4",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 10,
-          "Purpose": "cart3",
-          "Status": "outcome"
-        },
-        {
-          "Id": 4,
-          "Executor": "executor5",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 30,
-          "Purpose": "cart4",
-          "Status": "outcome"
-        },
-        {
-          "Id": 5,
           "Executor": "owner",
           "DateOfEvent": "05/07/2022 11:56:54",
           "Amount": 25,
           "Purpose": "cash withdrawal",
           "Status": "outcome"
+        },
+        {
+          "Id": 2,
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:45:41",
+          "Amount": 1000,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
+        },
+        {
+          "Id": 3,
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:45:48",
+          "Amount": 50,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
+        },
+        {
+          "Id": 4,
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:45:51",
+          "Amount": 100,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
+        },
+        {
+          "Id": 5,
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:45:53",
+          "Amount": 50,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
         }
       ],
-      "Balance": 25
+      "Balance": 825
     },
     {
       "Id": 5555666677778888,
@@ -235,46 +235,46 @@
       "TransactionList": [
         {
           "Id": 1,
-          "Executor": "executor1",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 2550,
-          "Purpose": "salary",
-          "Status": "income"
-        },
-        {
-          "Id": 2,
-          "Executor": "executor2",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 150,
-          "Purpose": "cart1",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 15:12:13",
+          "Amount": 1000,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
+          "Id": 2,
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 15:12:20",
+          "Amount": 2000,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
+        },
+        {
           "Id": 3,
-          "Executor": "executor3",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 255,
-          "Purpose": "cart2",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 15:12:25",
+          "Amount": 500,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 4,
-          "Executor": "executor4",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 10,
-          "Purpose": "cart3",
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 15:12:30",
+          "Amount": 300,
+          "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
           "Id": 5,
-          "Executor": "executor5",
-          "DateOfEvent": "05/06/2022 15:47:20",
-          "Amount": 30,
-          "Purpose": "cart4",
-          "Status": "outcome"
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 15:12:38",
+          "Amount": 1000,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
         }
       ],
-      "Balance": 5000
+      "Balance": 6200
     }
   ]
 }

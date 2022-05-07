@@ -6,6 +6,7 @@ namespace BusinessLogic.Services
     public class ATMService : IATMService
     {
         private readonly ATMRepo ATMRepo;
+
         public ATMService(ATMRepo aTMRepo)
         {
             ATMRepo = aTMRepo;

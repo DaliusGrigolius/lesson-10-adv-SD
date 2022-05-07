@@ -1,8 +1,4 @@
 ﻿using Repository.ExternalApi;
-using Repository.Models;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
 
 namespace Repository.DataAccess
 {

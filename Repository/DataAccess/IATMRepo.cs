@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Repository.DataAccess
+﻿namespace Repository.DataAccess
 {
     public interface IATMRepo
     {

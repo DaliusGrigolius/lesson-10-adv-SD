@@ -7,14 +7,6 @@ namespace Repository.ExternalApi
 {
     public class Serializer : ISerializer
     {
-        private readonly ATMRepo ATMRepo;
-
-        public Serializer(ATMRepo aTMRepo)
-        {
-            ATMRepo = aTMRepo;
-            ATMRepo = new ATMRepo(new Deserializer());
-        }
-
         public void UpdateDataFile(ATM atm)
         {
             var filePath = @"..\..\..\..\DataFiles\atm.json";
