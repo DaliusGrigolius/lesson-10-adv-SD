@@ -40,6 +40,9 @@
             this.ExitButton = new System.Windows.Forms.Button();
             this.WithdrawAmountTextBox = new System.Windows.Forms.TextBox();
             this.WithdrawConfirmbutton = new System.Windows.Forms.Button();
+            this.DepositCashButton = new System.Windows.Forms.Button();
+            this.DepositCashTextBox = new System.Windows.Forms.TextBox();
+            this.DepositConfirmButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CardNumberLabel
@@ -68,7 +71,7 @@
             this.OutputTextBox.Name = "OutputTextBox";
             this.OutputTextBox.ReadOnly = true;
             this.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.OutputTextBox.Size = new System.Drawing.Size(447, 226);
+            this.OutputTextBox.Size = new System.Drawing.Size(540, 226);
             this.OutputTextBox.TabIndex = 2;
             // 
             // PinCodeTextBox
@@ -99,7 +102,7 @@
             // 
             // ShowBalanceButton
             // 
-            this.ShowBalanceButton.Location = new System.Drawing.Point(32, 127);
+            this.ShowBalanceButton.Location = new System.Drawing.Point(32, 102);
             this.ShowBalanceButton.Name = "ShowBalanceButton";
             this.ShowBalanceButton.Size = new System.Drawing.Size(215, 23);
             this.ShowBalanceButton.TabIndex = 6;
@@ -110,7 +113,7 @@
             // 
             // TransactionsButton
             // 
-            this.TransactionsButton.Location = new System.Drawing.Point(32, 156);
+            this.TransactionsButton.Location = new System.Drawing.Point(32, 130);
             this.TransactionsButton.Name = "TransactionsButton";
             this.TransactionsButton.Size = new System.Drawing.Size(215, 23);
             this.TransactionsButton.TabIndex = 7;
@@ -121,7 +124,7 @@
             // 
             // WithdrawButton
             // 
-            this.WithdrawButton.Location = new System.Drawing.Point(32, 185);
+            this.WithdrawButton.Location = new System.Drawing.Point(32, 159);
             this.WithdrawButton.Name = "WithdrawButton";
             this.WithdrawButton.Size = new System.Drawing.Size(215, 23);
             this.WithdrawButton.TabIndex = 8;
@@ -159,11 +162,43 @@
             this.WithdrawConfirmbutton.Visible = false;
             this.WithdrawConfirmbutton.Click += new System.EventHandler(this.WithdrawConfirmbutton_Click);
             // 
+            // DepositCashButton
+            // 
+            this.DepositCashButton.Location = new System.Drawing.Point(32, 187);
+            this.DepositCashButton.Name = "DepositCashButton";
+            this.DepositCashButton.Size = new System.Drawing.Size(215, 23);
+            this.DepositCashButton.TabIndex = 12;
+            this.DepositCashButton.Text = "Deposit Cash";
+            this.DepositCashButton.UseVisualStyleBackColor = true;
+            this.DepositCashButton.Visible = false;
+            this.DepositCashButton.Click += new System.EventHandler(this.DepositCashButton_Click);
+            // 
+            // DepositCashTextBox
+            // 
+            this.DepositCashTextBox.Location = new System.Drawing.Point(368, 46);
+            this.DepositCashTextBox.Name = "DepositCashTextBox";
+            this.DepositCashTextBox.Size = new System.Drawing.Size(100, 23);
+            this.DepositCashTextBox.TabIndex = 13;
+            this.DepositCashTextBox.Visible = false;
+            // 
+            // DepositConfirmButton
+            // 
+            this.DepositConfirmButton.Location = new System.Drawing.Point(368, 75);
+            this.DepositConfirmButton.Name = "DepositConfirmButton";
+            this.DepositConfirmButton.Size = new System.Drawing.Size(100, 23);
+            this.DepositConfirmButton.TabIndex = 14;
+            this.DepositConfirmButton.Text = "Deposit Cash";
+            this.DepositConfirmButton.UseVisualStyleBackColor = true;
+            this.DepositConfirmButton.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 273);
+            this.ClientSize = new System.Drawing.Size(814, 273);
+            this.Controls.Add(this.DepositConfirmButton);
+            this.Controls.Add(this.DepositCashTextBox);
+            this.Controls.Add(this.DepositCashButton);
             this.Controls.Add(this.WithdrawConfirmbutton);
             this.Controls.Add(this.WithdrawAmountTextBox);
             this.Controls.Add(this.ExitButton);
@@ -197,5 +232,8 @@
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.TextBox WithdrawAmountTextBox;
         private System.Windows.Forms.Button WithdrawConfirmbutton;
+        private System.Windows.Forms.Button DepositCashButton;
+        private System.Windows.Forms.TextBox DepositCashTextBox;
+        private System.Windows.Forms.Button DepositConfirmButton;
     }
 }

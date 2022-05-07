@@ -24,78 +24,35 @@ namespace WinFormsApp
         public Form1()
         {
             InitializeComponent();
-            serializer = new Serializer();
-            aTMService = new ATMService();
-            aTMRepo = new ATMRepo();
+            serializer = new Serializer(new ATMRepo(new Deserializer()));
+            aTMService = new ATMService(new ATMRepo(new Deserializer()));
+            aTMRepo = new ATMRepo(new Deserializer());
             atm = aTMRepo.RetrieveATM();
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            cardNumber = Convert.ToInt64(CardNumberTextBox.Text);
-            pinCode = Convert.ToInt32(PinCodeTextBox.Text);
-            bool isValid = aTMService.Validate(cardNumber, pinCode);
-            
-            if (isValid)
-            {
-                currentCard = atm.CardsList.Single(i => i.Id == cardNumber);
-                OutputTextBox.Clear();
-                OutputTextBox.Text = $"Hello, {currentCard.Client.FullName}!\r\nSelect an action from the menu on the left";
-                ShowBalanceButton.Visible = true;
-                ShowBalanceButton.Location = new Point(32, 12);
-                TransactionsButton.Visible = true;
-                TransactionsButton.Location = new Point(32, 41);
-                WithdrawButton.Visible = true;
-                WithdrawButton.Location = new Point(32, 70);
-                CardNumberLabel.Visible = false;
-                CardNumberTextBox.Visible = false;
-                PinCodeLabel.Visible = false;
-                PinCodeTextBox.Visible = false;
-                ConfirmButton.Visible = false;
-            }
-            else
-            {
-                attempts++;
-                if (attempts < 3)
-                {
-                    OutputTextBox.Clear();
-                    OutputTextBox.Text = $"Incorrect password, {3 - attempts} attempt(s) left before card will be blocked and ejected.";
-                }
-                else
-                {
-                    this.Close();
-                }
-            }
+            ValidateData();
         }
 
         private void ShowBalanceButton_Click(object sender, EventArgs e)
         {
-            OutputTextBox.Clear();
-            OutputTextBox.Text = $"Balance: ${currentCard.Balance}";
-            WithdrawAmountTextBox.Visible = false;
-            WithdrawConfirmbutton.Visible = false;
-            WithdrawButton.Visible = true;
+            ShowBalance();
         }
 
         private void TransactionsButton_Click(object sender, EventArgs e)
         {
-            OutputTextBox.Clear();
-            WithdrawAmountTextBox.Visible = false;
-            WithdrawConfirmbutton.Visible = false;
-            WithdrawButton.Visible = true;
-            OutputTextBox.Text = "ID                  DATE                  EXECUTOR          PURPOSE     STATUS    AMOUNT\r\n\r\n";
-            foreach (var card in currentCard.TransactionList)
-            {
-                OutputTextBox.Text += $"{card.Id}      {card.DateOfEvent}       {card.Executor}              {card.Purpose}        {card.Status}        {card.Amount}\r\n\r\n";
-            }
+            ShowTransactionList();
         }
 
         private void WithdrawButton_Click(object sender, EventArgs e)
         {
-            OutputTextBox.Text = "Enter amount to withdraw:";
-            WithdrawButton.Visible = false;
-            WithdrawAmountTextBox.Visible = true;
-            WithdrawConfirmbutton.Visible = true;
+            ShowWithdrawalPanel();
+        }
+
+        private void DepositCashButton_Click(object sender, EventArgs e)
+        {
+            ShowDepositCashPanel();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -105,6 +62,111 @@ namespace WinFormsApp
 
         private void WithdrawConfirmbutton_Click(object sender, EventArgs e)
         {
+            ExecuteWithdrawal();
+        }
+
+        private void ValidateData()
+        {
+            cardNumber = Convert.ToInt64(CardNumberTextBox.Text);
+            pinCode = Convert.ToInt32(PinCodeTextBox.Text);
+            bool isValid = aTMService.Validate(cardNumber, pinCode);
+
+            if (isValid)
+            {
+                Greetings();
+            }
+            else
+            {
+                ShowErrorMessage();
+            }
+        }
+
+        private void Greetings()
+        {
+            currentCard = atm.CardsList.Single(i => i.Id == cardNumber);
+            OutputTextBox.Clear();
+            OutputTextBox.Text = $"Hello, {currentCard.Client.FullName}!\r\nSelect an action from the menu on the left";
+            ShowBalanceButton.Visible = true;
+            ShowBalanceButton.Location = new Point(32, 12);
+            TransactionsButton.Visible = true;
+            TransactionsButton.Location = new Point(32, 41);
+            WithdrawButton.Visible = true;
+            WithdrawButton.Location = new Point(32, 70);
+            DepositCashButton.Visible = true;
+            DepositCashButton.Location = new Point(32, 99);
+            CardNumberLabel.Visible = false;
+            CardNumberTextBox.Visible = false;
+            PinCodeLabel.Visible = false;
+            PinCodeTextBox.Visible = false;
+            ConfirmButton.Visible = false;
+            DepositCashTextBox.Visible = false;
+            DepositConfirmButton.Visible = false;
+        }
+
+        private void ShowErrorMessage()
+        {
+            attempts++;
+            if (attempts < 3)
+            {
+                OutputTextBox.Clear();
+                OutputTextBox.Text = $"Incorrect password, {3 - attempts} attempt(s) left before card will be blocked and ejected.";
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void ShowWithdrawalPanel()
+        {
+            OutputTextBox.Text = "Enter amount to withdraw:";
+            WithdrawButton.Visible = false;
+            WithdrawAmountTextBox.Visible = true;
+            WithdrawConfirmbutton.Visible = true;
+            DepositCashTextBox.Visible = false;
+            DepositConfirmButton.Visible = false;
+        }
+
+        private void ShowDepositCashPanel()
+        {
+            OutputTextBox.Text = "Enter amount to deposit:";
+            WithdrawButton.Visible = true;
+            WithdrawAmountTextBox.Visible = false;
+            WithdrawConfirmbutton.Visible = false;
+            DepositCashTextBox.Visible = true;
+            DepositCashTextBox.Location = new Point(262, 46);
+            DepositConfirmButton.Visible = true;
+            DepositConfirmButton.Location = new Point(262, 75);
+        }
+
+        private void ShowBalance()
+        {
+            OutputTextBox.Clear();
+            OutputTextBox.Text = $"Balance: ${currentCard.Balance}";
+            WithdrawAmountTextBox.Visible = false;
+            WithdrawConfirmbutton.Visible = false;
+            WithdrawButton.Visible = true;
+            DepositCashTextBox.Visible = false;
+            DepositConfirmButton.Visible = false;
+        }
+
+        private void ShowTransactionList()
+        {
+            OutputTextBox.Clear();
+            WithdrawAmountTextBox.Visible = false;
+            WithdrawConfirmbutton.Visible = false;
+            WithdrawButton.Visible = true;
+            DepositCashTextBox.Visible = false;
+            DepositConfirmButton.Visible = false;
+            OutputTextBox.Text = "ID                  DATE                  EXECUTOR             PURPOSE               STATUS         AMOUNT\r\n\r\n";
+            foreach (var card in currentCard.TransactionList)
+            {
+                OutputTextBox.Text += $"{card.Id}      {card.DateOfEvent}       {card.Executor}              {card.Purpose}        {card.Status}        {card.Amount}\r\n\r\n";
+            }
+        }
+
+        private void ExecuteWithdrawal()
+        {
             OutputTextBox.Clear();
             string amount = WithdrawAmountTextBox.Text;
             int convertedAmount = int.Parse(amount);
@@ -112,12 +174,13 @@ namespace WinFormsApp
             WithdrawButton.Visible = true;
             WithdrawAmountTextBox.Visible = false;
             WithdrawConfirmbutton.Visible = false;
+            DepositCashTextBox.Visible = false;
+            DepositConfirmButton.Visible = false;
 
-            if (currentCard.Balance - convertedAmount < 0)
+            if (currentCard.Balance - convertedAmount < 10)
             {
                 OutputTextBox.Text = "Insufficient account balance";
                 WithdrawAmountTextBox.Clear();
-
             }
             else
             {
@@ -128,8 +191,7 @@ namespace WinFormsApp
                 currentCard.TransactionList[3].Id -= 1;
                 currentCard.TransactionList[4].Id -= 1;
                 currentCard.TransactionList.RemoveAt(0);
-                int transactionId = 5;
-                currentCard.TransactionList.Add(new Transaction(transactionId, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash withdrawal", "outcome"));
+                currentCard.TransactionList.Add(new Transaction(5, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash withdrawal", "outcome"));
                 serializer.UpdateDataFile(atm);
             }
 

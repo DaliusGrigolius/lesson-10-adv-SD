@@ -1,27 +1,20 @@
 ﻿using Repository.DataAccess;
+using Repository.ExternalApi.Interfaces;
 using System.IO;
 using System.Text.Json;
 
 namespace Repository.ExternalApi
 {
-    public class Serializer
+    public class Serializer : ISerializer
     {
         private readonly ATMRepo ATMRepo;
 
-        public Serializer()
+        public Serializer(ATMRepo aTMRepo)
         {
-            ATMRepo = new ATMRepo();
+            ATMRepo = aTMRepo;
+            ATMRepo = new ATMRepo(new Deserializer());
         }
 
-        public void GenerateDataFile()
-        {
-            var atm = ATMRepo.RetrieveATM();
-            var filePath = @"..\..\..\..\DataFiles\atm.json";
-            if (!Directory.Exists(filePath)) Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            var jsonString = JsonSerializer.Serialize(atm, options);
-            File.WriteAllText(filePath, jsonString);
-        }
         public void UpdateDataFile(ATM atm)
         {
             var filePath = @"..\..\..\..\DataFiles\atm.json";

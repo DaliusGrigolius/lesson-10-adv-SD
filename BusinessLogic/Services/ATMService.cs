@@ -1,11 +1,16 @@
-﻿using Repository.DataAccess;
+﻿using BusinessLogic.Interfaces;
+using Repository.DataAccess;
 using System.Linq;
 
 namespace BusinessLogic.Services
 {
-    public class ATMService
+    public class ATMService : IATMService
     {
-        ATMRepo ATMRepo = new ATMRepo();
+        private readonly ATMRepo ATMRepo;
+        public ATMService(ATMRepo aTMRepo)
+        {
+            ATMRepo = aTMRepo;
+        }
 
         public bool Validate(long cardNumber, int pinCode)
         {

@@ -8,12 +8,14 @@ namespace Repository.DataAccess
 {
     public class ATMRepo : IATMRepo
     {
-        Deserializer Deserializer = new Deserializer();
+        private readonly Deserializer Deserializer;
         private ATM atm { get; }
 
-        public ATMRepo()
+        public ATMRepo(Deserializer deserializer)
         {
-            atm = Deserializer.DeserializeATM();
+            var filePath = @"..\..\..\..\DataFiles\atm.json";
+            Deserializer = deserializer;
+            atm = Deserializer.DeserializeATM(filePath);
         }
 
         public ATM RetrieveATM()
