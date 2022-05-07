@@ -190,6 +190,7 @@
             this.DepositConfirmButton.Text = "Deposit Cash";
             this.DepositConfirmButton.UseVisualStyleBackColor = true;
             this.DepositConfirmButton.Visible = false;
+            this.DepositConfirmButton.Click += new System.EventHandler(this.DepositConfirmButton_Click);
             // 
             // Form1
             // 

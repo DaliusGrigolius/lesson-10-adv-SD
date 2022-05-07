@@ -1,6 +1,5 @@
 ﻿using BusinessLogic.Interfaces;
 using Repository.DataAccess;
-using System.Linq;
 
 namespace BusinessLogic.Services
 {
@@ -15,10 +14,7 @@ namespace BusinessLogic.Services
         public bool Validate(long cardNumber, int pinCode)
         {
             ATM atm = ATMRepo.RetrieveATM();
-            bool cardIsValid = atm.CardsList.Any(i => i.Id == cardNumber);
-            bool pinCodeIsValid = atm.CardsList.Any(i => i.PinCode == pinCode);
-            if (cardIsValid && pinCodeIsValid) return true;
-            return false;
+            return atm.CardsList.Exists(i => i.Id == cardNumber && i.PinCode == pinCode);
         }
     }
 }

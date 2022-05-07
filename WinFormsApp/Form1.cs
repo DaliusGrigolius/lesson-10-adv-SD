@@ -32,7 +32,7 @@ namespace WinFormsApp
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            ValidateData();
+            ExecuteValidation();
         }
 
         private void ShowBalanceButton_Click(object sender, EventArgs e)
@@ -65,20 +65,19 @@ namespace WinFormsApp
             ExecuteWithdrawal();
         }
 
-        private void ValidateData()
+        private void DepositConfirmButton_Click(object sender, EventArgs e)
+        {
+            ExecuteDepositCash();
+        }
+
+        private void ExecuteValidation()
         {
             cardNumber = Convert.ToInt64(CardNumberTextBox.Text);
             pinCode = Convert.ToInt32(PinCodeTextBox.Text);
             bool isValid = aTMService.Validate(cardNumber, pinCode);
 
-            if (isValid)
-            {
-                Greetings();
-            }
-            else
-            {
-                ShowErrorMessage();
-            }
+            if (isValid) Greetings();
+            else ShowErrorMessage();
         }
 
         private void Greetings()
@@ -133,6 +132,7 @@ namespace WinFormsApp
             WithdrawButton.Visible = true;
             WithdrawAmountTextBox.Visible = false;
             WithdrawConfirmbutton.Visible = false;
+            DepositCashButton.Visible = false;
             DepositCashTextBox.Visible = true;
             DepositCashTextBox.Location = new Point(262, 46);
             DepositConfirmButton.Visible = true;
@@ -196,6 +196,29 @@ namespace WinFormsApp
             }
 
             WithdrawAmountTextBox.Clear();
+        }
+
+        private void ExecuteDepositCash()
+        {
+            OutputTextBox.Clear();
+            string amount = DepositCashTextBox.Text;
+            int convertedAmount = int.Parse(amount);
+            OutputTextBox.Text = $"Success! ${convertedAmount} was accepted";
+
+            DepositCashTextBox.Visible = false;
+            DepositConfirmButton.Visible = false;
+            DepositCashButton.Visible = true;
+
+            currentCard.Balance += convertedAmount;
+            currentCard.TransactionList[1].Id -= 1;
+            currentCard.TransactionList[2].Id -= 1;
+            currentCard.TransactionList[3].Id -= 1;
+            currentCard.TransactionList[4].Id -= 1;
+            currentCard.TransactionList.RemoveAt(0);
+            currentCard.TransactionList.Add(new Transaction(5, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash deposit", "income"));
+            serializer.UpdateDataFile(atm);
+
+            DepositCashTextBox.Clear();
         }
     }
 }

@@ -16,45 +16,45 @@
         {
           "Id": 1,
           "Executor": "owner",
-          "DateOfEvent": "05/07/2022 11:49:27",
-          "Amount": 100,
-          "Purpose": "cash withdrawal",
-          "Status": "outcome"
-        },
-        {
-          "Id": 2,
-          "Executor": "owner",
-          "DateOfEvent": "05/07/2022 11:49:32",
-          "Amount": 10,
-          "Purpose": "cash withdrawal",
-          "Status": "outcome"
-        },
-        {
-          "Id": 3,
-          "Executor": "owner",
-          "DateOfEvent": "05/07/2022 11:49:33",
-          "Amount": 10,
-          "Purpose": "cash withdrawal",
-          "Status": "outcome"
-        },
-        {
-          "Id": 4,
-          "Executor": "owner",
           "DateOfEvent": "05/07/2022 11:49:37",
           "Amount": 50,
           "Purpose": "cash withdrawal",
           "Status": "outcome"
         },
         {
-          "Id": 5,
+          "Id": 2,
           "Executor": "owner",
           "DateOfEvent": "05/07/2022 12:25:00",
           "Amount": 100,
           "Purpose": "cash withdrawal",
           "Status": "outcome"
+        },
+        {
+          "Id": 3,
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:06:14",
+          "Amount": 1000,
+          "Purpose": "cash deposit",
+          "Status": "income"
+        },
+        {
+          "Id": 4,
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:10:02",
+          "Amount": 200,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
+        },
+        {
+          "Id": 5,
+          "Executor": "owner",
+          "DateOfEvent": "05/07/2022 14:10:43",
+          "Amount": 100,
+          "Purpose": "cash deposit",
+          "Status": "income"
         }
       ],
-      "Balance": 200
+      "Balance": 1100
     },
     {
       "Id": 2222333344445555,
@@ -109,7 +109,7 @@
           "Status": "outcome"
         }
       ],
-      "Balance": 100
+      "Balance": 800
     },
     {
       "Id": 3333444455556666,
