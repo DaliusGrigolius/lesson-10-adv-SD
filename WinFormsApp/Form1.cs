@@ -1,8 +1,6 @@
-﻿using BusinessLogic.Interfaces;
-using BusinessLogic.Services;
+﻿using BusinessLogic.Services;
 using Repository.DataAccess;
 using Repository.ExternalApi;
-using Repository.ExternalApi.Interfaces;
 using Repository.Models;
 using System;
 using System.Drawing;
@@ -75,6 +73,12 @@ namespace WinFormsApp
         private void ExecuteValidation()
         {
             cardNumber = Convert.ToInt64(CardNumberTextBox.Text);
+            //if (cardNumber.GetType() != typeof(long) && cardNumber.ToString().Split("").ToList().Count < 16)
+            //{
+            //    OutputTextBox.Text = "Card number must contain 16 integers!\r\n";
+            //    CardNumberTextBox.Clear();
+            //    return;
+            //}
             pinCode = Convert.ToInt32(PinCodeTextBox.Text);
             bool isValid = aTMService.Validate(cardNumber, pinCode);
 
@@ -225,6 +229,26 @@ namespace WinFormsApp
             serializer.UpdateDataFile(atm);
 
             DepositCashTextBox.Clear();
+        }
+
+        private void CardNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !Char.IsNumber(e.KeyChar) && e.KeyChar != 8;
+        }
+
+        private void PinCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !Char.IsNumber(e.KeyChar) && e.KeyChar != 8;
+        }
+
+        private void WithdrawAmountTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !Char.IsNumber(e.KeyChar) && e.KeyChar != 8;
+        }
+
+        private void DepositCashTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !Char.IsNumber(e.KeyChar) && e.KeyChar != 8;
         }
     }
 }

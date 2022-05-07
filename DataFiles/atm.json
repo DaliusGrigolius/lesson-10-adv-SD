@@ -6,7 +6,7 @@
       "PinCode": 1234,
       "Client": {
         "Id": 1,
-        "FullName": "Name1 Surname1",
+        "FullName": "Titas Titauskas",
         "BirthDate": "1985-02-03",
         "Address": "address1",
         "PhoneNumber": "860568350",
@@ -61,7 +61,7 @@
       "PinCode": 2345,
       "Client": {
         "Id": 1,
-        "FullName": "Name2 Surname2",
+        "FullName": "Tomas Tomauskas",
         "BirthDate": "1986-03-04",
         "Address": "address2",
         "PhoneNumber": "860568351",
@@ -116,7 +116,7 @@
       "PinCode": 3456,
       "Client": {
         "Id": 1,
-        "FullName": "Name3 Surname3",
+        "FullName": "Marius Mariauskas",
         "BirthDate": "1987-04-05",
         "Address": "address3",
         "PhoneNumber": "860568352",
@@ -171,7 +171,7 @@
       "PinCode": 4567,
       "Client": {
         "Id": 1,
-        "FullName": "Name4 Surname4",
+        "FullName": "Daumantas Daumantauskas",
         "BirthDate": "1988-05-06",
         "Address": "address4",
         "PhoneNumber": "860568353",
@@ -226,7 +226,7 @@
       "PinCode": 5678,
       "Client": {
         "Id": 1,
-        "FullName": "Name5 Surname5",
+        "FullName": "Rokas Rokauskas",
         "BirthDate": "1989-06-07",
         "Address": "address5",
         "PhoneNumber": "860568354",

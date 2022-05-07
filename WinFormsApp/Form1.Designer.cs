@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.CardNumberLabel = new System.Windows.Forms.Label();
             this.CardNumberTextBox = new System.Windows.Forms.TextBox();
             this.OutputTextBox = new System.Windows.Forms.TextBox();
@@ -49,7 +48,7 @@
             // CardNumberLabel
             // 
             this.CardNumberLabel.AutoSize = true;
-            this.CardNumberLabel.Location = new System.Drawing.Point(32, 16);
+            this.CardNumberLabel.Location = new System.Drawing.Point(12, 16);
             this.CardNumberLabel.Name = "CardNumberLabel";
             this.CardNumberLabel.Size = new System.Drawing.Size(109, 15);
             this.CardNumberLabel.TabIndex = 0;
@@ -57,10 +56,11 @@
             // 
             // CardNumberTextBox
             // 
-            this.CardNumberTextBox.Location = new System.Drawing.Point(147, 12);
+            this.CardNumberTextBox.Location = new System.Drawing.Point(126, 12);
             this.CardNumberTextBox.Name = "CardNumberTextBox";
-            this.CardNumberTextBox.Size = new System.Drawing.Size(100, 23);
+            this.CardNumberTextBox.Size = new System.Drawing.Size(121, 23);
             this.CardNumberTextBox.TabIndex = 1;
+            this.CardNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CardNumberTextBox_KeyPress);
             // 
             // OutputTextBox
             // 
@@ -77,15 +77,16 @@
             // 
             // PinCodeTextBox
             // 
-            this.PinCodeTextBox.Location = new System.Drawing.Point(147, 46);
+            this.PinCodeTextBox.Location = new System.Drawing.Point(126, 46);
             this.PinCodeTextBox.Name = "PinCodeTextBox";
-            this.PinCodeTextBox.Size = new System.Drawing.Size(100, 23);
+            this.PinCodeTextBox.Size = new System.Drawing.Size(121, 23);
             this.PinCodeTextBox.TabIndex = 3;
+            this.PinCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PinCodeTextBox_KeyPress);
             // 
             // PinCodeLabel
             // 
             this.PinCodeLabel.AutoSize = true;
-            this.PinCodeLabel.Location = new System.Drawing.Point(56, 50);
+            this.PinCodeLabel.Location = new System.Drawing.Point(13, 50);
             this.PinCodeLabel.Name = "PinCodeLabel";
             this.PinCodeLabel.Size = new System.Drawing.Size(85, 15);
             this.PinCodeLabel.TabIndex = 4;
@@ -93,9 +94,9 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(147, 75);
+            this.ConfirmButton.Location = new System.Drawing.Point(126, 75);
             this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(100, 23);
+            this.ConfirmButton.Size = new System.Drawing.Size(121, 23);
             this.ConfirmButton.TabIndex = 5;
             this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = true;
@@ -151,6 +152,7 @@
             this.WithdrawAmountTextBox.Size = new System.Drawing.Size(100, 23);
             this.WithdrawAmountTextBox.TabIndex = 10;
             this.WithdrawAmountTextBox.Visible = false;
+            this.WithdrawAmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WithdrawAmountTextBox_KeyPress);
             // 
             // WithdrawConfirmbutton
             // 
@@ -181,6 +183,7 @@
             this.DepositCashTextBox.Size = new System.Drawing.Size(100, 23);
             this.DepositCashTextBox.TabIndex = 13;
             this.DepositCashTextBox.Visible = false;
+            this.DepositCashTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DepositCashTextBox_KeyPress);
             // 
             // DepositConfirmButton
             // 
@@ -197,7 +200,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(796, 260);
             this.Controls.Add(this.DepositConfirmButton);
