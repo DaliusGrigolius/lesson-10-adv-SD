@@ -13,12 +13,10 @@ namespace Repository.ExternalApi
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(baseURL);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                return await reader.ReadToEndAsync();
-            }
+            using HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            using Stream stream = response.GetResponseStream();
+            using StreamReader reader = new(stream);
+            return await reader.ReadToEndAsync();
         }
     }
 }

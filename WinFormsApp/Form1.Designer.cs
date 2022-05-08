@@ -218,7 +218,7 @@
             this.Controls.Add(this.CardNumberTextBox);
             this.Controls.Add(this.CardNumberLabel);
             this.Name = "Form1";
-            this.Opacity = 0.9D;
+            this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
