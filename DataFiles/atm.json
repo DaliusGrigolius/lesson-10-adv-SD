@@ -244,9 +244,17 @@
           "Amount": 1000,
           "Purpose": "cash deposit       ",
           "Status": "income  "
+        },
+        {
+          "Id": 30,
+          "Executor": "owner",
+          "DateOfEvent": "05/08/2022 14:12:06",
+          "Amount": 100,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
         }
       ],
-      "Balance": 2000
+      "Balance": 2100
     },
     {
       "Id": 2222333344445555,

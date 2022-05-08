@@ -3,11 +3,12 @@ using Repository.DataAccess;
 using Repository.ExternalApi;
 using Repository.Models;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace WinFormsApp
 {
@@ -16,7 +17,6 @@ namespace WinFormsApp
         long cardNumber;
         int pinCode;
         int attempts;
-        int transactionCounter;
         readonly Serializer serializer;
         readonly ATMService aTMService;
         readonly ATMRepo aTMRepo;
@@ -74,19 +74,23 @@ namespace WinFormsApp
 
         private void ExecuteValidation()
         {
-            cardNumber = Convert.ToInt64(CardNumberTextBox.Text);
-            pinCode = Convert.ToInt32(PinCodeTextBox.Text);
-            bool regexMatchForCardNumber = Regex.Match(CardNumberTextBox.Text, "^[0-9]{16,16}$").Success;
-            bool regexMatchForPin = Regex.Match(PinCodeTextBox.Text, "^[0-9]{4,4}$").Success;
-            if(regexMatchForCardNumber && regexMatchForPin)
+            bool isCardNumConvertSuccess = long.TryParse(CardNumberTextBox.Text, out cardNumber);
+            bool isPinCodeConvertSuccess = int.TryParse(PinCodeTextBox.Text, out pinCode);
+            if (isCardNumConvertSuccess && isPinCodeConvertSuccess)
             {
-                bool isValid = aTMService.Validate(cardNumber, pinCode);
-                if (isValid) Greetings();
-                else ShowErrorMessage();
+                bool regexMatchForCardNumber = Regex.Match(CardNumberTextBox.Text, "^[0-9]{16,16}$").Success;
+                bool regexMatchForPin = Regex.Match(PinCodeTextBox.Text, "^[0-9]{4,4}$").Success;
+                if (regexMatchForCardNumber && regexMatchForPin)
+                {
+                    bool isValid = aTMService.Validate(cardNumber, pinCode);
+                    if (isValid) Greetings();
+                    else ShowErrorMessage();
+                }
+                else OutputTextBox.Text = "Error: not valid card number(16 digits) or pin code(4 digits).";
             }
             else
             {
-                OutputTextBox.Text = "Error: not valid card number(16 digits) or pin code(4 digits).";
+                OutputTextBox.Text = "Error: card number and pin code fields can't by empty!";
             }
         }
 
@@ -121,10 +125,7 @@ namespace WinFormsApp
                 OutputTextBox.Clear();
                 OutputTextBox.Text = $"Incorrect password, {3 - attempts} attempt(s) left before card will be blocked and ejected.";
             }
-            else
-            {
-                this.Close();
-            }
+            else  this.Close();
         }
 
         private void ShowWithdrawalPanel()
@@ -185,47 +186,62 @@ namespace WinFormsApp
             OutputTextBox.Clear();
             string amount = WithdrawAmountTextBox.Text;
             bool regexMatch = Regex.Match(amount, "^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|1000)$").Success;
+            ExecuteByRegexResult(regexMatch, amount);
+        }
+
+        private void ExecuteByRegexResult(bool regexMatch, string amount)
+        {
             if (regexMatch)
             {
-                var today = DateTime.Now.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
-                var todaysTransactions = currentCard.TransactionList.FindAll(i => DateTime.Parse(i.DateOfEvent).Date.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture) == today && i.Purpose == "cash withdrawal");
-                if (todaysTransactions.Count < 10)
-                {
-                    int convertedAmount = int.Parse(amount);
-                    WithdrawButton.Visible = true;
-                    WithdrawAmountTextBox.Visible = false;
-                    WithdrawConfirmbutton.Visible = false;
-                    DepositCashTextBox.Visible = false;
-                    DepositConfirmButton.Visible = false;
-
-                    if (currentCard.Balance - convertedAmount < 1)
-                    {
-                        OutputTextBox.Text = "Error: insufficient account balance!";
-                        WithdrawAmountTextBox.Clear();
-                    }
-                    else
-                    {
-                        OutputTextBox.Text = $"Success! Take your ${convertedAmount}";
-                        currentCard.Balance -= convertedAmount;
-                        int transactionId = currentCard.TransactionList.Count + 1;
-                        currentCard.TransactionList.Add(new Transaction(transactionId, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash withdrawal", "outcome"));
-                        serializer.UpdateDataFile(atm);
-                        WithdrawAmountTextBox.Clear();
-                    }
-                }
-                else
-                {
-                    OutputTextBox.Clear();
-                    OutputTextBox.Text = "Error: you reached transactions limit/day(10). Please come back tommorow or contact your Bank for more information.";
-                    WithdrawAmountTextBox.Visible = false;
-                    WithdrawConfirmbutton.Visible = false;
-                    WithdrawAmountTextBox.Clear();
-                }
+                ExecuteByTransactionLimitResult(amount);
             }
             else
             {
                 OutputTextBox.Clear();
                 OutputTextBox.Text = $"Error. Enter digits from 1 to 1000. Maximum withdrawal amount/day: $1000";
+                WithdrawAmountTextBox.Clear();
+            }
+        }
+
+        private void ExecuteByTransactionLimitResult(string amount)
+        {
+            string today = DateTime.Now.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+            List<Transaction> todaysTransactions = currentCard.TransactionList.FindAll(i => DateTime.Parse(i.DateOfEvent).Date.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture) == today && i.Purpose == "cash withdrawal");
+            if (todaysTransactions.Count < 10)
+            {
+                int convertedAmount = int.Parse(amount);
+                WithdrawButton.Visible = true;
+                WithdrawAmountTextBox.Visible = false;
+                WithdrawConfirmbutton.Visible = false;
+                DepositCashTextBox.Visible = false;
+                DepositConfirmButton.Visible = false;
+
+                ExecuteByBalanceResult(convertedAmount);
+            }
+            else
+            {
+                OutputTextBox.Clear();
+                OutputTextBox.Text = "Error: you reached transactions limit/day(10). Please come back tommorow or contact your Bank for more information.";
+                WithdrawAmountTextBox.Visible = false;
+                WithdrawConfirmbutton.Visible = false;
+                WithdrawAmountTextBox.Clear();
+            }
+        }
+
+        private void ExecuteByBalanceResult(int convertedAmount)
+        {
+            if (currentCard.Balance - convertedAmount < 1)
+            {
+                OutputTextBox.Text = "Error: insufficient account balance!";
+                WithdrawAmountTextBox.Clear();
+            }
+            else
+            {
+                OutputTextBox.Text = $"Success! Take your ${convertedAmount}";
+                currentCard.Balance -= convertedAmount;
+                int transactionId = currentCard.TransactionList.Count + 1;
+                currentCard.TransactionList.Add(new Transaction(transactionId, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash withdrawal", "outcome"));
+                serializer.UpdateDataFile(atm);
                 WithdrawAmountTextBox.Clear();
             }
         }
