@@ -10,11 +10,9 @@ namespace Repository.ExternalApi
         public void UpdateDataFile(ATM atm)
         {
             var filePath = @"..\..\..\..\DataFiles\atm.json";
-            if (!Directory.Exists(filePath)) Directory.CreateDirectory(Path.GetDirectoryName(filePath));
             var options = new JsonSerializerOptions { WriteIndented = true };
             var jsonString = JsonSerializer.Serialize(atm, options);
             File.WriteAllText(filePath, jsonString);
         }
-
     }
 }

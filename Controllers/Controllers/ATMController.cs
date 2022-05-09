@@ -23,21 +23,13 @@ namespace Controllers.Controllers
         //[ProducesResponseType(typeof(bool), 404)]
         public IActionResult GetATM()
         {
-            return Ok(ATMRepo.ReturnCardList());
+            return Ok(ATMRepo.RetrieveATM());
         }
 
         [HttpGet]
         public Card GetCard(long cardNumber, int pinCode)
         {
-            bool isValid = ATMService.Validate(cardNumber, pinCode);
-            if (isValid)
-            {
-                return ATMRepo.ReturnCardList().Single(i => i.Id == cardNumber && i.PinCode == pinCode);
-            }
-            else
-            {
-                return null;
-            }
+            return null;
         }
     }
 }

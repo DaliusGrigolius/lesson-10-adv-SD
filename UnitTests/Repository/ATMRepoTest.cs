@@ -1,22 +1,17 @@
-﻿using Controllers.Controllers;
-using Repository.DataAccess;
-using System;
+﻿using Repository.DataAccess;
+using Repository.ExternalApi;
 using Xunit;
 
 namespace UnitTests.Repository
 {
     public class ATMRepoTest
     {
-        private readonly IATMRepo _ATMRepo;
-        public ATMRepoTest(IATMRepo aTMRepo)
-        {
-            _ATMRepo = aTMRepo;
-        }
+        private readonly IATMRepo _repo;
 
         [Fact]
-        public void ATMCheck_ReturnsATM()
+        public void ATMCheck_ReturnsNotNull()
         {
-            Assert.NotNull(_ATMRepo.RetrieveATM());
+            Assert.NotNull(_repo.RetrieveATM());
         }
     }
 }
