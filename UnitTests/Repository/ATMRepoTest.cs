@@ -1,5 +1,6 @@
 ﻿using Controllers.Controllers;
 using Repository.DataAccess;
+using System;
 using Xunit;
 
 namespace UnitTests.Repository
@@ -10,13 +11,12 @@ namespace UnitTests.Repository
         public ATMRepoTest(IATMRepo aTMRepo)
         {
             _ATMRepo = aTMRepo;
-            //_privateProperty = new ATMController();
         }
 
-        //[Fact]
-        //public void ATMListCheckIfReturnMoreThanOne()
-        //{
-        //    Assert.True(_ATMRepo.ReturnATMList().Count > 0);
-        //}
+        [Fact]
+        public void ATMCheck_ReturnsATM()
+        {
+            Assert.NotNull(_ATMRepo.RetrieveATM());
+        }
     }
 }

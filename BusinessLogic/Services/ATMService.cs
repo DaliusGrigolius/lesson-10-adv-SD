@@ -5,16 +5,16 @@ namespace BusinessLogic.Services
 {
     public class ATMService : IATMService
     {
-        private readonly ATMRepo ATMRepo;
+        private readonly IATMRepo _ATMRepo;
 
-        public ATMService(ATMRepo aTMRepo)
+        public ATMService(IATMRepo aTMRepo)
         {
-            ATMRepo = aTMRepo;
+            _ATMRepo = aTMRepo;
         }
 
         public bool Validate(long cardNumber, int pinCode)
         {
-            ATM atm = ATMRepo.RetrieveATM();
+            ATM atm = _ATMRepo.RetrieveATM();
             return atm.CardsList.Exists(i => i.Id == cardNumber && i.PinCode == pinCode);
         }
     }

@@ -1,6 +1,8 @@
-﻿using BusinessLogic.Services;
+﻿using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using Repository.DataAccess;
 using Repository.ExternalApi;
+using Repository.ExternalApi.Interfaces;
 using Repository.Models;
 using System;
 using System.Collections.Generic;
@@ -17,19 +19,19 @@ namespace WinFormsApp
         long cardNumber;
         int pinCode;
         int attempts;
-        readonly Serializer serializer;
-        readonly ATMService aTMService;
-        readonly ATMRepo aTMRepo;
+        readonly ISerializer _serializer;
+        readonly IATMService _ATMService;
+        readonly IATMRepo _ATMRepo;
         readonly ATM atm;
         Card currentCard;
 
         public Form1()
         {
             InitializeComponent();
-            serializer = new Serializer();
-            aTMService = new ATMService(new ATMRepo(new Deserializer()));
-            aTMRepo = new ATMRepo(new Deserializer());
-            atm = aTMRepo.RetrieveATM();
+            _serializer = new Serializer();
+            _ATMService = new ATMService(new ATMRepo(new Deserializer()));
+            _ATMRepo = new ATMRepo(new Deserializer());
+            atm = _ATMRepo.RetrieveATM();
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -82,7 +84,7 @@ namespace WinFormsApp
                 bool regexMatchForPin = Regex.Match(PinCodeTextBox.Text, "^[0-9]{4,4}$").Success;
                 if (regexMatchForCardNumber && regexMatchForPin)
                 {
-                    bool isValid = aTMService.Validate(cardNumber, pinCode);
+                    bool isValid = _ATMService.Validate(cardNumber, pinCode);
                     if (isValid) Greetings();
                     else ShowErrorMessage();
                 }
@@ -198,7 +200,7 @@ namespace WinFormsApp
             else
             {
                 OutputTextBox.Clear();
-                OutputTextBox.Text = $"Error. Enter digits from 1 to 1000. Maximum withdrawal amount/day: $1000";
+                OutputTextBox.Text = $"Error. Enter digits from 1 to 1000. Maximum withdrawal amount/time: $1000. Maximum transactions/day: 10";
                 WithdrawAmountTextBox.Clear();
             }
         }
@@ -241,7 +243,7 @@ namespace WinFormsApp
                 currentCard.Balance -= convertedAmount;
                 int transactionId = currentCard.TransactionList.Count + 1;
                 currentCard.TransactionList.Add(new Transaction(transactionId, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash withdrawal", "outcome"));
-                serializer.UpdateDataFile(atm);
+                _serializer.UpdateDataFile(atm);
                 WithdrawAmountTextBox.Clear();
             }
         }
@@ -263,12 +265,12 @@ namespace WinFormsApp
                 currentCard.Balance += convertedAmount;
                 int transactionId = currentCard.TransactionList.Count + 1;
                 currentCard.TransactionList.Add(new Transaction(transactionId, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash deposit       ", "income  "));
-                serializer.UpdateDataFile(atm);
+                _serializer.UpdateDataFile(atm);
                 DepositCashTextBox.Clear();
             }
             else
             {
-                OutputTextBox.Text = $"Error. Enter digits from 1 to 1000. Maximum deposit amount/time: $1000";
+                OutputTextBox.Text = $"Error. Enter amount from 1 to 1000. Maximum deposit amount/time: $1000";
                 DepositCashTextBox.Clear();
             }
             

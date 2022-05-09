@@ -1,17 +1,18 @@
 ﻿using Repository.ExternalApi;
+using Repository.ExternalApi.Interfaces;
 
 namespace Repository.DataAccess
 {
     public class ATMRepo : IATMRepo
     {
-        private readonly Deserializer Deserializer;
+        private readonly IDeserializer _deserializer;
         private ATM Atm { get; }
 
-        public ATMRepo(Deserializer deserializer)
+        public ATMRepo(IDeserializer deserializer)
         {
+            _deserializer = deserializer;
             var filePath = @"..\..\..\..\DataFiles\atm.json";
-            Deserializer = deserializer;
-            Atm = Deserializer.DeserializeATM(filePath);
+            Atm = _deserializer.DeserializeATM(filePath);
         }
 
         public ATM RetrieveATM()

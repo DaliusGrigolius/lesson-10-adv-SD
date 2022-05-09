@@ -307,9 +307,17 @@
           "Amount": 50,
           "Purpose": "cash withdrawal",
           "Status": "outcome"
+        },
+        {
+          "Id": 6,
+          "Executor": "owner",
+          "DateOfEvent": "05/08/2022 14:58:19",
+          "Amount": 50,
+          "Purpose": "cash withdrawal",
+          "Status": "outcome"
         }
       ],
-      "Balance": 1300
+      "Balance": 1250
     },
     {
       "Id": 3333444455556666,
@@ -362,9 +370,17 @@
           "Amount": 20,
           "Purpose": "cash withdrawal",
           "Status": "outcome"
+        },
+        {
+          "Id": 6,
+          "Executor": "owner",
+          "DateOfEvent": "05/08/2022 17:38:35",
+          "Amount": 1000,
+          "Purpose": "cash deposit       ",
+          "Status": "income  "
         }
       ],
-      "Balance": 600
+      "Balance": 1600
     },
     {
       "Id": 4444555566667777,
