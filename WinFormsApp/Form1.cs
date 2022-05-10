@@ -19,6 +19,7 @@ namespace WinFormsApp
         long cardNumber;
         int pinCode;
         int attempts;
+        readonly string filePath;
         readonly ISerializer _serializer;
         readonly IATMService _ATMService;
         readonly IATMRepo _ATMRepo;
@@ -28,9 +29,10 @@ namespace WinFormsApp
         public Form1()
         {
             InitializeComponent();
+            filePath = @"..\..\..\..\DataFiles\atm.json";
             _serializer = new Serializer();
-            _ATMService = new ATMService(new ATMRepo(new Deserializer()));
-            _ATMRepo = new ATMRepo(new Deserializer());
+            _ATMRepo = new ATMRepo(new Deserializer(), filePath);
+            _ATMService = new ATMService();
             atm = _ATMRepo.RetrieveATM();
         }
 
@@ -84,7 +86,7 @@ namespace WinFormsApp
                 bool regexMatchForPin = Regex.Match(PinCodeTextBox.Text, "^[0-9]{4,4}$").Success;
                 if (regexMatchForCardNumber && regexMatchForPin)
                 {
-                    bool isValid = _ATMService.Validate(cardNumber, pinCode);
+                    bool isValid = _ATMService.Validate(cardNumber, pinCode, atm);
                     if (isValid) Greetings();
                     else ShowErrorMessage();
                 }
@@ -243,7 +245,7 @@ namespace WinFormsApp
                 currentCard.Balance -= convertedAmount;
                 int transactionId = currentCard.TransactionList.Count + 1;
                 currentCard.TransactionList.Add(new Transaction(transactionId, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash withdrawal", "outcome"));
-                _serializer.UpdateDataFile(atm);
+                _serializer.UpdateDataFile(atm, filePath);
                 WithdrawAmountTextBox.Clear();
             }
         }
@@ -265,7 +267,7 @@ namespace WinFormsApp
                 currentCard.Balance += convertedAmount;
                 int transactionId = currentCard.TransactionList.Count + 1;
                 currentCard.TransactionList.Add(new Transaction(transactionId, $"owner", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture), convertedAmount, "cash deposit       ", "income  "));
-                _serializer.UpdateDataFile(atm);
+                _serializer.UpdateDataFile(atm, filePath);
                 DepositCashTextBox.Clear();
             }
             else

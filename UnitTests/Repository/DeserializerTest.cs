@@ -4,19 +4,19 @@ using Xunit;
 
 namespace UnitTests.Repository
 {
-    public class ATMRepoTest
+    public class DeserializerTest
     {
         readonly ATMRepo repo;
 
-        public ATMRepoTest()
+        public DeserializerTest()
         {
             repo = new ATMRepo(new Deserializer(), @"..\..\..\..\DataFiles\atm.json");
         }
-
         [Fact]
-        public void RetrieveATM_ReturnsNotNull()
+        public void DeserializeATM_DataFile_ReturnsATMTypeObject()
         {
-            Assert.NotNull(repo.RetrieveATM());
+            var atm = repo.RetrieveATM();
+            Assert.IsType<ATM>(atm);
         }
     }
 }

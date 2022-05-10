@@ -1,7 +1,6 @@
 ﻿using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Repository.DataAccess;
-using System.Linq;
 
 namespace Controllers.Controllers
 {

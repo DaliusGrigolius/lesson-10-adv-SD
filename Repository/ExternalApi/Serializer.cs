@@ -7,9 +7,8 @@ namespace Repository.ExternalApi
 {
     public class Serializer : ISerializer
     {
-        public void UpdateDataFile(ATM atm)
+        public void UpdateDataFile(ATM atm, string filePath)
         {
-            var filePath = @"..\..\..\..\DataFiles\atm.json";
             var options = new JsonSerializerOptions { WriteIndented = true };
             var jsonString = JsonSerializer.Serialize(atm, options);
             File.WriteAllText(filePath, jsonString);
